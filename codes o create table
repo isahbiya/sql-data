@@ -1,0 +1,21 @@
+CREATE TABLE customers (
+  customer_id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(100),
+  city VARCHAR(50)
+);
+
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  customer_id INTEGER,
+  order_date DATE,
+  total DECIMAL(10, 2),
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE employees (
+  employee_id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  manager_id INTEGER,
+  FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
